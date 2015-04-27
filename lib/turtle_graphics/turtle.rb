@@ -48,7 +48,7 @@ module Turtle
       x, y = @position
       nx, ny = new_position(angle, step)
 
-      @svg.add_shape(Svg::Line.new(x, y, nx, ny))
+      @svg.add_shape(Svg::Line.new(x, y, nx, ny)) if @pen
     end
 
     # It returns new position after step.
@@ -68,21 +68,15 @@ module Turtle
       (angle + 180) % 360
     end
 
-    # @param [Integer] n number of edges
-    # @param [Numeric] a length of side
-    def regular_polygon(n, a)
-      angle = 360.0 / n
-      n.times do
-        forward(a)
-        right(angle)
-      end
-    end
-
-    # @param [Integer] n number of edges
-    # @param [Numeric] a length of side
-    def star_polygon(n, a)
-
-    end
+    # # @param [Integer] n number of edges
+    # # @param [Numeric] a length of side
+    # def regular_polygon(n, a)
+    #   angle = 360.0 / n
+    #   n.times do
+    #     forward(a)
+    #     right(angle)
+    #   end
+    # end
 
     private :change_angle, :opposite_angle, :do_step, :new_position
 

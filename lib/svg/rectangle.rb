@@ -20,5 +20,18 @@ module Svg
 
       super('rect', args2)
     end
+
+    def min_xy
+      [@attributes['x'], @attributes['y']]
+    end
+
+    def max_xy
+      [@attributes['x'] + @attributes['width'], @attributes['y'] + @attributes['height']]
+    end
+
+    def translate_xy(x, y)
+      @attributes['x'] += x
+      @attributes['y'] += y
+    end
   end
 end

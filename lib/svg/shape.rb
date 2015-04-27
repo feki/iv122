@@ -47,6 +47,18 @@ module Svg
       end
     end
 
+    def min_xy
+      raise 'Methods is not overridden.'
+    end
+
+    def max_xy
+      raise 'Methods is not overridden.'
+    end
+
+    def translate_xy(x, y)
+      raise 'Methods is not overridden.'
+    end
+
     protected :args_to_attributes
   end
 end

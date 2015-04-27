@@ -21,5 +21,20 @@ module Svg
 
       super('line', args2)
     end
+
+    def min_xy
+      [[@attributes['x1'], @attributes['x2']].min, [@attributes['y1'], @attributes['y2']].min]
+    end
+
+    def max_xy
+      [[@attributes['x1'], @attributes['x2']].max, [@attributes['y1'], @attributes['y2']].max]
+    end
+
+    def translate_xy(x, y)
+      @attributes['x1'] += x
+      @attributes['x2'] += x
+      @attributes['y1'] += y
+      @attributes['y2'] += y
+    end
   end
 end

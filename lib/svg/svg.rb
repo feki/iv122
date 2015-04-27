@@ -5,6 +5,9 @@ include REXML
 module Svg
   # Svg class represent svg element, which holds svg's elements.
   class Svg
+
+    attr_reader :shapes
+
     # Svg class initialize
     #
     # ==== Arguments
@@ -26,6 +29,20 @@ module Svg
     def doc
       xml_doc = Document.new
 
+      s = @shapes.min_by { |shape| shape.min_xy[0] }
+      if s.min_xy[0] <= 0
+        tx = s.min_xy[0].abs + 1
+        @shapes.each { |shape| shape.translate_xy(tx, 0) }
+      end
+
+      s = @shapes.min_by { |shape| shape.min_xy[1] }
+      if s.min_xy[1] <= 0
+        ty = s.min_xy[1].abs + 1
+        @shapes.each { |shape| shape.translate_xy(0, ty) }
+      end
+
+      resize_svg()
+
       root_element = Element.new 'svg'
       root_element.add_attributes({ 'width' => @width, 'height' => @height })
 
@@ -35,6 +52,14 @@ module Svg
       xml_doc << XMLDecl.new
 
       xml_doc
+    end
+
+    def resize_svg
+      sx = @shapes.max_by { |shape| shape.max_xy[0] }
+      sy = @shapes.max_by { |shape| shape.max_xy[1] }
+
+      @width = sx.max_xy[0] + 1
+      @height = sy.max_xy[1] + 1
     end
 
     def add_shape(shape)

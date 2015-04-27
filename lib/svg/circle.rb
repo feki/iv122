@@ -19,5 +19,20 @@ module Svg
 
       super('circle', args2)
     end
+
+    def min_xy
+      radius = @attributes['r']
+      [@attributes['cx'] - radius, @attributes['cy'] - radius]
+    end
+
+    def max_xy
+      radius = @attributes['r']
+      [@attributes['cx'] + radius, @attributes['cy'] + radius]
+    end
+
+    def translate_xy(x, y)
+      @attributes['cx'] += x
+      @attributes['cy'] += y
+    end
   end
 end
