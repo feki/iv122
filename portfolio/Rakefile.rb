@@ -1,26 +1,31 @@
 require 'slim'
 
-task :clean do
-  rm_rf 'build/.'
+task :clean, :dir_name do |t, args|
+  dir_name = args[:dir_name] || 'build'
+  rm_rf "#{dir_name}/."
 end
 
-task :copy_files do
-  mkdir 'build' unless File.exists? 'build'
-  mkdir 'build/js'
-  mkdir 'build/css'
-  mkdir 'build/fonts'
-  mkdir 'build/img'
+task :copy_files, :dir_name do |t, args|
+  dir_name = args[:dir_name] || 'build'
 
-  cp 'site/bower_components/bootstrap/dist/css/bootstrap.min.css', 'build/css/'
-  cp 'site/bower_components/bootstrap/dist/js/bootstrap.min.js', 'build/js/'
-  cp 'site/bower_components/jquery/dist/jquery.min.js', 'build/js/'
-  cp_r 'site/bower_components/bootstrap/dist/fonts/.', 'build/fonts/'
-  cp_r 'site/css/.', 'build/css/'
-  cp_r 'site/js/.', 'build/js/'
-  cp_r 'site/img/.', 'build/img/'
+  mkdir dir_name unless File.exists? dir_name
+  mkdir "#{dir_name}/js"
+  mkdir "#{dir_name}/css"
+  mkdir "#{dir_name}/fonts"
+  mkdir "#{dir_name}/img"
+
+  cp 'site/bower_components/bootstrap/dist/css/bootstrap.min.css', "#{dir_name}/css/"
+  cp 'site/bower_components/bootstrap/dist/js/bootstrap.min.js', "#{dir_name}/js/"
+  cp 'site/bower_components/jquery/dist/jquery.min.js', "#{dir_name}/js/"
+  cp_r 'site/bower_components/bootstrap/dist/fonts/.', "#{dir_name}/fonts/"
+  cp_r 'site/css/.', "#{dir_name}/css/"
+  cp_r 'site/js/.', "#{dir_name}/js/"
+  cp_r 'site/img/.', "#{dir_name}/img/"
 end
 
-task :build => [:clean, :copy_files] do
-  File.open('build/index.html', 'w') { |f| f.write Slim::Template.new('site/index.slim').render }
-  File.open('build/1.html', 'w') { |f| f.write Slim::Template.new('site/1.slim').render }
+task :build, [:dir_name] => [:clean, :copy_files] do |t, args|
+  dir_name = args[:dir_name] || 'build'
+  File.open("#{dir_name}/index.html", 'w') { |f| f.write Slim::Template.new('site/index.slim').render }
+  File.open("#{dir_name}/1.html", 'w') { |f| f.write Slim::Template.new('site/1.slim').render }
+  File.open("#{dir_name}/2.html", 'w') { |f| f.write Slim::Template.new('site/2.slim').render }
 end

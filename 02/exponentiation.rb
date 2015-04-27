@@ -1,13 +1,23 @@
+# Umocnovanie s realnym exponentom:
+#   najskor rozdelime exponent na celu a realnu cast podla vzorca:
+#   x**e = x**(a+b) = x**a * x**b, kde a je cela cast cisla e a b je realna cast e
+#   realne cislo prevedieme do tvaru racionalneho cisla b = p/q kde p a q su cele cisla
+#   x**b = x**(p/q) = qthroot(x**p)
 class Exponentiation
   def squaring_pow(x, e)
+    raise ArgumentError, 'Exponent must be integer.' if not e.is_a? Integer
+
     return 1 if e.zero?
+    return squaring_pow(1.0/x, -e) if e < 0
     return x if e == 1
 
     e.odd? ? x * squaring_pow(x*x, (e-1)/2) : squaring_pow(x*x, e/2)
   end
 
   def pow(x, e)
-    return (x ** (e-e.to_int)) * pow(x, e.to_int) if e.is_a? Float
+    raise ArgumentError, 'Exponent must be integer.' if not e.is_a? Integer
+
+    return pow(1.0/x, -e) if e < 0
 
     # irb(main):001:0> arr = Array.new(4, 9)
     # => [9, 9, 9, 9]
@@ -24,21 +34,24 @@ class Exponentiation
     Array.new(e, x).reduce(1, :*)
   end
 
-  def nthroot(n, x, precision=0.000001)
-    a = Float(x)
+  def nth_root(root, e, precision=0.000001)
+    raise ArgumentError, 'Exponent must be integer.' if not e.is_a? Integer
+
+    result = Float(e)
     begin
-      prev = a
-      a = ((n-1)*prev + x/squaring_pow(prev,n-1)) / n
-    end while (prev - a).abs > precision
-    a
+      prev = result
+      result = ((root-1)*prev + e/squaring_pow(prev, root-1)) / root
+    end while (prev - result).abs > precision
+    result
   end
 
-  def ln(x1, n=100)
-    x = x1-1
-    (1..n).inject(0) { |mem, i| mem += squaring_pow(-1, i+1)*(squaring_pow(x, i)/Float(i)) }
+  # postupne redukuje desatinne miesta
+  def pow_real(x, e, precision=000001)
+    pow(x, e.to_i) * (e%1 != 0 ? nth_root(10, pow_real(x, (e%1)*10), precision) : 1)
   end
 
-  def pow_real(x, e)
-
+  # postupne redukuje desatinne miesta
+  def squaring_pow_real(x, e, precision=000001)
+    squaring_pow(x, e.to_i) * (e%1 != 0 ? nth_root(10, squaring_pow_real(x, (e%1)*10), precision) : 1)
   end
 end

@@ -1,6 +1,11 @@
 module Combinatorics
   class Combinatorics
     class << self
+
+      #
+      # Generátor kombinácii,
+      # defaultne bez opakovania, ale i s opakovaním (podľa príznaku repetition).
+      #
       def combinations(items, k, repetition=false)
         res = []
         
@@ -21,10 +26,17 @@ module Combinatorics
         res
       end
 
+      #
+      # Generátor kombinácii s opakovaním.
+      #
       def combinations_with_repetition(items, k)
         Combinatorics.combinations(items, k, true)
       end
 
+      #
+      # Generátor variacii,
+      # defaultne bez opakovania, ale i s opakovaním (podlľa príznaku repetition).
+      #
       def variations(items, k, repetition=false)
         res = []
         
@@ -44,10 +56,16 @@ module Combinatorics
         res
       end
 
+      #
+      # Generátor variacii s opakovaním.
+      #
       def variations_with_repetition(items, k)
         Combinatorics.variations(items, k, true)
       end
 
+      #
+      # Generátor permutácii.
+      #
       def permutations(items)
         Combinatorics.variations(items, items.count)
       end
