@@ -1,0 +1,109 @@
+doctype html
+html
+  head
+    title Ján Gábela, IV122 - 3. týždeň
+    == Slim::Template.new('site/_head.slim').render
+
+  body
+    .container
+      .row
+        .col-lg-10.col-lg-offset-1
+          h1.text-center
+            | Vyriešené zadania z tretieho týždňa
+
+      hr
+      .row
+        .col-lg-offset-1.col-lg-10
+          .row
+            .col-lg-12
+              h3.text-primary A) Knižnica pre korytnačiu grafiku
+              p
+                | Zdrojové kódy:
+                a< href="https://github.com/feki/iv122/blob/master/lib/turtle_graphics/turtle.rb" turtle.rb
+                | ,
+                a< href="https://github.com/feki/iv122/blob/master/03/turtle_regular_polygon.rb" turtle_regular_polygon.rb
+                | ,
+                a< href="https://github.com/feki/iv122/blob/master/03/turtle_star_polygon.rb" turtle_star_polygon.rb
+              .row
+                .col-lg-offset-3.col-lg-3
+                  img.img-responsive src="img/turtle_regular_polygon_n9.png"
+                .col-lg-3
+                  img.img-responsive src="img/turtle_star_polygon_n9_k5.png"
+
+          .row
+            .col-lg-12
+              h3.text-primary B) Vykreslovanie relatívne vs. absolútne
+              p
+                | Zdrojové kódy:
+                a< href="https://github.com/feki/iv122/blob/master/03/turtle_shapes.rb" turtle_shapes.rb
+              .row
+                .col-lg-3
+                  img.img-responsive src="img/pictureA.png"
+              hr
+              .row
+                .col-lg-3
+                  img.img-responsive src="img/pictureB.png"
+              hr
+              .row
+                .col-lg-3
+                  img.img-responsive src="img/pictureD.png"
+              hr
+              .row
+                .col-lg-3
+                  img.img-responsive src="img/pictureE.png"
+
+          .row
+            .col-lg-12
+              h3.text-primary C) Korytnačia grafika a fraktály
+              p
+                | Zdrojové kódy:
+                a< href="https://github.com/feki/iv122/blob/master/lib/turtle_graphics/turtle.rb" turtle.rb
+                | ,
+                a< href="https://github.com/feki/iv122/blob/master/03/turtle_star_polygon.rb" turtle_star_polygon.rb
+                | ,
+                a< href="https://github.com/feki/iv122/blob/master/03/turtle_star_polygon.rb" turtle_star_polygon.rb
+                | ,
+                a< href="https://github.com/feki/iv122/blob/master/03/turtle_star_polygon.rb" turtle_star_polygon.rb
+                | ,
+                a< href="https://github.com/feki/iv122/blob/master/03/turtle_star_polygon.rb" turtle_star_polygon.rb
+                | ,
+                a< href="https://github.com/feki/iv122/blob/master/03/turtle_star_polygon.rb" turtle_star_polygon.rb
+              .row
+                .col-lg-3
+                  h4.text-info Ker
+                  img.img-responsive src="img/turtle_shrub.png"
+              hr
+              .row
+                .col-lg-3
+                  h4.text-info Kochova vločka
+                  img.img-responsive src="img/turtle_koch_snowflake.png"
+              hr
+              .row
+                .col-lg-3
+                  h4.text-info Sierpinského trojuholník
+                  img.img-responsive src="img/turtle_sierpinski.png"
+              hr
+              .row
+                .col-lg-3
+                  h4.text-info Hilbertova krivka
+                  img.img-responsive src="img/turtle_hilbert.png"
+              hr
+              .row
+                .col-lg-3
+                  h4.text-info Päťuholníková vločka
+                  img.img-responsive src="img/turtle_pentaflake.png"
+              hr
+              .row
+                .col-lg-3
+                  h4.text-info Krishna Anklet
+                  img.img-responsive src="img/turtle_krishna_anklet.png"
+
+          .row
+            .col-lg-12
+              h3.text-primary D) Kreativita korytnačky
+              .row
+                .col-lg-3
+                  h4.text-info Dragon Curve
+                  img.img-responsive src="img/turtle_dragon_curve.png"
+
+          hr

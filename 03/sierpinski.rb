@@ -59,41 +59,57 @@ end
 # real	0m0.048s
 # user	0m0.036s
 # sys 	0m0.007s
+#
+#
 # $ time ruby sierpinski.rb 1
 # 
 # real	0m0.065s
 # user	0m0.041s
 # sys 	0m0.016s
+#
+#
 # $ time ruby sierpinski.rb 2
 # 
 # real	0m0.073s
 # user	0m0.056s
 # sys 	0m0.011s
+#
+#
 # $ time ruby sierpinski.rb 3
 # 
 # real	0m0.133s
 # user	0m0.104s
 # sys 	0m0.021s
+#
+#
 #  $ time ruby sierpinski.rb 4
 # 
 # real	0m0.299s
 # user	0m0.266s
 # sys 	0m0.026s
+#
+#
 # $ time ruby sierpinski.rb 5
 # 
 # real	0m0.811s
 # user	0m0.756s
 # sys 	0m0.042s
+#
+#
 # $ time ruby sierpinski.rb 6
 # 
 # real	0m2.673s
 # user	0m2.555s
 # sys 	0m0.082s
+#
+#
 # $ time ruby sierpinski.rb 7
 # 
 # real	0m10.108s
 # user	0m9.862s
 # sys 	0m0.167s
+#
+#
 # $ time ruby sierpinski.rb 8
 # 
 # real	0m52.009s

@@ -68,15 +68,15 @@ module Turtle
       (angle + 180) % 360
     end
 
-    # # @param [Integer] n number of edges
-    # # @param [Numeric] a length of side
-    # def regular_polygon(n, a)
-    #   angle = 360.0 / n
-    #   n.times do
-    #     forward(a)
-    #     right(angle)
-    #   end
-    # end
+    # @param [Integer] n number of edges
+    # @param [Numeric] a length of side
+    def regular_polygon(n, a)
+      angle = 360.0 / n
+      n.times do
+        forward(a)
+        right(angle)
+      end
+    end
 
     private :change_angle, :opposite_angle, :do_step, :new_position
 

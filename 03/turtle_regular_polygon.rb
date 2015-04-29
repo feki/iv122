@@ -6,7 +6,7 @@ def turtle_regular_polygon(turtle, n, len, &code)
     code.call(turtle) if code
 
     turtle.forward(len)
-    turtle.right(angle)
+    turtle.left(angle)
   end
 end
 
@@ -23,12 +23,12 @@ if __FILE__ == $0
 
   size, cx, cy = 2*(r+20), r+20, r+20
 
-  turtle =
-    if n.odd?
-      Turtle::Turtle.new(size, size, { :x => cx, :y => cy-r, :angle => 90+(180-angle)/2 })
-    else
-      Turtle::Turtle.new(size, size, { :x => cx-p, :y => cy+len_a/2, :angle => (180-angle)-90 })
-    end
+  turtle = Turtle::Turtle.new(size, size, {angle: 0})
+    # if n.odd?
+    #   Turtle::Turtle.new(size, size, { :x => cx, :y => cy-r, :angle => 90+(180-angle)/2 })
+    # else
+    #   Turtle::Turtle.new(size, size, { :x => cx-p, :y => cy+len_a/2, :angle => (180-angle)-90 })
+    # end
 
 
   turtle_regular_polygon(turtle, n, len_a) do |t|

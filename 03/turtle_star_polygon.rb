@@ -26,7 +26,7 @@ def turtle_star_polygon(turtle, n, k, len_a, &code)
       code.call(turtle) if code
 
       turtle.forward(len)
-      turtle.right(angle)
+      turtle.left(angle)
     end
   # end
 end
@@ -45,17 +45,17 @@ if __FILE__ == $0
 
   size, cx, cy = 2*(r+20), r+20, r+20
 
-  turtle =
-    if n.odd?
-      # puts 90+(180-angle)/2
-      Turtle::Turtle.new(size, size, { :x => cx, :y => cy-r, :angle => 90+(180-angle)/2 })
-    else
-      # puts angle-90
-      # TODO: dokoncit transformaciu pociatocneho bodu, jeho posunutie
-      Turtle::Turtle.new(size, size, { :x => cx-p, :y => cy-  len_a/2, :angle => 90-k*360.0/n })
-    end
-
-  turtle.svg.add_shape(Svg::Point.new(turtle.position[0], turtle.position[1]))
+  turtle = Turtle::Turtle.new(size, size, {angle: 0})
+  #   if n.odd?
+  #     # puts 90+(180-angle)/2
+  #     Turtle::Turtle.new(size, size, { :x => cx, :y => cy-r, :angle => 90+(180-angle)/2 })
+  #   else
+  #     # puts angle-90
+  #     # TODO: dokoncit transformaciu pociatocneho bodu, jeho posunutie
+  #     Turtle::Turtle.new(size, size, { :x => cx-p, :y => cy-  len_a/2, :angle => 90-k*360.0/n })
+  #   end
+  #
+  # turtle.svg.add_shape(Svg::Point.new(turtle.position[0], turtle.position[1]))
   turtle_star_polygon(turtle, n, k, len_a)
 
   turtle.write("outputs/turtle_star_polygon_n#{n}_k#{k}.svg")
