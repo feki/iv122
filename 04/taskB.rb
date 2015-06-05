@@ -1,4 +1,4 @@
-require 'shapes'
+require './shapes'
 
 if __FILE__ == $0
   # sample_polygon

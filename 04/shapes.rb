@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'RMagick'
+require './../05/line_intersection'
 
 include Magick
 
@@ -7,8 +8,8 @@ module Shapes
   def circle_full(size, r)
     img = Image.new(size, size) { self.background_color = 'white' }
     cx = cy = size/2.0
-    for x in 0...size
-      for y in 0...size
+    (0...size).each do |x|
+      (0...size).each do |y|
         img.pixel_color(x, y, 'black') if Math.hypot(x-cx, y-cy) <= r
       end
     end
@@ -20,8 +21,8 @@ module Shapes
   def circle_impl(size, r, epsilon = 0.05)
     img = Image.new(size, size) { self.background_color = 'white' }
     cx = cy = size/2.0
-    for x in 0...size
-      for y in 0...size
+    (0...size).each do |x|
+      (0...size).each do |y|
         img.pixel_color(x, y, 'black') if (((x-cx)**2 + (y-cy)**2 - r**2) / r**2).abs < epsilon
       end
     end
@@ -83,13 +84,13 @@ module Shapes
     av, bv, cv = [0, m], [a, m], [a/2.0, 0]
     color_triangle = lambda { |curr, ver| 255 - Math.sqrt((ver[0]-curr[0])**2 + (ver[1]-curr[1])**2)/a * 255 }
 
-    for x in (-a/2)..(a/2)
+    ((-a/2)..(a/2)).each do |x|
       n = sqrt3*x
-      for y in 0...m.to_i
+      (0...m.to_i).each do |y|
         # img.pixel_color(x+a/2, m-y-1, 'black') if y <= m-n and y <= m+n
-        ca = color_triangle.call([x+a/2,m-y-1],av)
-        cb = color_triangle.call([x+a/2,m-y-1],bv)
-        cc = color_triangle.call([x+a/2,m-y-1],cv)
+        ca = color_triangle.call([x+a/2, m-y-1], av)
+        cb = color_triangle.call([x+a/2, m-y-1], bv)
+        cc = color_triangle.call([x+a/2, m-y-1], cv)
         img.pixel_color(x+a/2, m-y-1, "cmyk(#{ca},#{cb},#{cc},0)") if y <= m-n and y <= m+n
       end
     end
@@ -105,8 +106,8 @@ module Shapes
     radians = 2*Math::PI*((angle%360)/360.0)
 
     # http://math.stackexchange.com/questions/426150/what-is-the-general-equation-of-the-ellipse-that-is-not-in-the-origin-and-rotate
-    for x in 0...size
-      for y in 0...size
+    (0...size).each do |x|
+      (0...size).each do |y|
         # Bez rotacie
         # r = (x-ex)**2/a**2 + (y-ey)**2/b**2
         # img.pixel_color(x, y, "cmyk(0,0,0,#{255*(1-r)})") if r <= 1
@@ -181,8 +182,13 @@ module Shapes
 
     p = [x,y]
 
-    check_point(l1, p) && check_point(l2, p)
+    # check_point(l1, p) && check_point(l2, p)
     # (check_point(l1, p) && check_point(l2, p)) ? p : nil
+  end
+
+  def intersection?(l1, l2)
+    p = intersection(l1,l2)
+    check_point(l1, p) && check_point(l2, p)
   end
 
   # [[10, 10], [180, 20], [160, 150], [100, 50], [20,180]]
@@ -193,21 +199,43 @@ module Shapes
     maxx = maxy = 0
 
     lines = []
-    for i in 0...points.count
+    segments = []
+    (0...points.count).each do |i|
       minx = points[i][0] if points[i][0] < minx
       miny = points[i][1] if points[i][1] < miny
       maxx = points[i][0] if points[i][0] > maxx
       maxy = points[i][1] if points[i][1] > maxy
 
-      lines << [points[i],points[i-1]]
+      lines << [points[i], points[i-1]]
+      segments << LineIntersection::Segment.from_array(lines[i])
     end
 
-    for x in minx.to_i..maxx.to_i
-      for y in  miny.to_i..maxy.to_i
-        c = lines.count { |l| intersection(l, [[-1.0,-1.0],[x.to_f,y.to_f]]) }
+    (minx.to_i..maxx.to_i).each do |x|
+      (miny.to_i..maxy.to_i).each do |y|
+        # c = lines.count { |l| intersection?(l, [[0,y.to_f],[x.to_f,y.to_f]]) }
         # d = lines.count { |l| intersection(l, [[size.to_f,y.to_f],[x.to_f,y.to_f]]) }
         # img.pixel_color(x-1, (size) - y, 'black') if c.odd? and d.odd?
-        img.pixel_color(x-1, (size) - y, 'black') if c.odd?
+        # img.pixel_color(x-1, (size) - y, 'black') if c.odd?
+
+        # intersections = lines.map do |l1|
+        #   l2 = [[0, y.to_f], [x.to_f, y.to_f]]
+        #   p = intersection(l1, l2)
+        #   check_point(l1, p) && check_point(l2, p) ? [p[0].to_i, p[1].to_i] : nil
+        # end
+        #
+        # intersections = intersections.compact.uniq
+        # img.pixel_color(x-1, (size) - y, 'black') if intersections.odd?
+
+        res = segments.map do |s1|
+          s2 = LineIntersection::Segment.from_array([[0, y.to_f], [x.to_f, y.to_f]])
+          p = LineIntersection.ll_intersection(s1, s2)
+          p.x = p.x.to_i if p
+          p.y = p.y.to_i if p
+          p
+        end
+
+        res.compact!.uniq!
+        img.pixel_color(x-1, (size) - y, 'black') if res.count.odd?
 
         # ps = []
         # lines.each do |l|
