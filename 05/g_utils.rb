@@ -2,9 +2,12 @@ require_relative 'point'
 require_relative 'segment'
 
 module GUtils
+  #
+  # It returns collection of random points.
+  #
   def get_random_points(number_of_points, max_x, max_y)
     (0...number_of_points).to_a.map do |i|
-      srand(i)
+      srand
       x = rand(0..max_x)
       y = rand(0..max_y)
       LineIntersection::Point.new x: x, y: y
@@ -23,8 +26,11 @@ module GUtils
     # result
   end
 
-  def get_random_segments(number_of_segments, length)
-    get_random_points(number_of_segments, 255, 255).map do |p|
+  #
+  # It returns N random segments each of length L.
+  #
+  def get_random_segments(number_of_segments, length, size)
+    get_random_points(number_of_segments, size, size).map do |p|
       angle = get_random_angle
       x2 = length * Math.cos(angle) + p.x
       y2 = length * Math.sin(angle) + p.y
@@ -32,6 +38,9 @@ module GUtils
     end
   end
 
+  #
+  # It returns random angle.
+  #
   def get_random_angle
     rand * (2 * Math::PI)
   end
@@ -42,8 +51,18 @@ end
 require_relative '../lib/svg/svg'
 require_relative '../lib/svg/line'
 
+#
+# It generates N segments each of length L. It saves to outputs/segments.svg file.
+#
+# USAGE: ruby g_utils.rb N L
+# EXAMLPLE: ruby g_utils.rb 50 20
+#
 if $0 == __FILE__
-  segments = GUtils.get_random_segments(ARGV[0].to_i, ARGV[1].to_i)
+
+  number_of_segments = ARGV[0].to_i || 50
+  segment_length = ARGV[1].to_i || 20
+
+  segments = GUtils.get_random_segments(number_of_segments, segment_length)
   svg = Svg::Svg.new :width => 255, :height => 255
   segments.each do |s|
     svg.add_shape(Svg::Line.new(s.p1.x, s.p1.y, s.p2.x, s.p2.y))
