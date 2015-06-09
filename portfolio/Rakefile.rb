@@ -36,4 +36,5 @@ task :build, [:dir_name] => [:clean, :copy_files] do |t, args|
   File.open("#{dir_name}/8.html", 'w') { |f| f.write Slim::Template.new('site/8.slim').render }
   File.open("#{dir_name}/9.html", 'w') { |f| f.write Slim::Template.new('site/9.slim').render }
   File.open("#{dir_name}/10.html", 'w') { |f| f.write Slim::Template.new('site/10.slim').render }
+  File.open("#{dir_name}/11.html", 'w') { |f| f.write Slim::Template.new('site/11.slim').render }
 end
