@@ -1,0 +1,37 @@
+doctype html
+html
+  head
+    title Ján Gábela, IV122 - 12. týždeň
+    == Slim::Template.new('site/_head.slim').render
+
+  body
+    .container
+      .row
+        .col-lg-10.col-lg-offset-1
+          h1.text-center
+            | Vyriešené zadania z dvanásteho týždna
+
+      hr
+      .row
+        .col-lg-offset-1.col-lg-10
+          .row
+            .col-lg-12
+              h3.text-primary A) Číselné bludisko
+              p
+                | Zdrojové kódy:
+                a< href="https://github.com/feki/iv122/blob/master/12/maze.rb" maze.rb
+                | ,
+                a< href="https://github.com/feki/iv122/blob/master/12/recursive_backtracking.rb" recursive_backtracking.rb
+              p
+                | Kód na generovanie bludiska prevzatý z predmetu IV104 Seminář řešení programátorských úloh. Doplnená funkcia na vytvorenie Braid bludiska.
+              .row
+                .col-lg-4
+                  img.img-responsive src="img/12/RecursiveBacktracking.png"
+                .col-lg-4
+                  img.img-responsive src="img/12/braid1.png"
+                .col-lg-4
+                  img.img-responsive src="img/12/braid2.png"
+
+
+    javascript:
+      hljs.initHighlightingOnLoad();
