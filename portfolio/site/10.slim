@@ -1,0 +1,41 @@
+doctype html
+html
+  head
+    title Ján Gábela, IV122 - 11. týždeň
+    == Slim::Template.new('site/_head.slim').render
+
+  body
+    .container
+      .row
+        .col-lg-10.col-lg-offset-1
+          h1.text-center
+            | Vyriešené zadania z jedenásteho týždna
+
+      hr
+      .row
+        .col-lg-offset-1.col-lg-10
+          .row
+            .col-lg-12
+              h3.text-primary A) Lineárna regresia
+              p
+                | Zdrojové kódy:
+                a< href="https://github.com/feki/iv122/blob/master/10/taskA.rb" taskA.rb
+              .row
+                .col-lg-6
+                  img.img-responsive src="img/10/linreg_plot.png"
+                .col-lg-6
+                  img.img-responsive src="img/10/faithful_plot.png"
+          .row
+            .col-lg-12
+              h3.text-primary B) Detekcia zhlukov
+              p
+                | Zdrojové kódy:
+                a< href="https://github.com/feki/iv122/blob/master/10/taskB.rb" taskB.rb
+                | ,
+                a< href="https://github.com/feki/iv122/blob/master/10/k_means.rb" k_means.rb
+              .row
+                .col-lg-6
+                  img.img-responsive src="img/10/cluster_data_plot.png"
+
+    javascript:
+      hljs.initHighlightingOnLoad();

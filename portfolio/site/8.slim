@@ -1,0 +1,55 @@
+doctype html
+html
+  head
+    title Ján Gábela, IV122 - 9. týždeň
+    == Slim::Template.new('site/_head.slim').render
+
+  body
+    .container
+      .row
+        .col-lg-10.col-lg-offset-1
+          h1.text-center
+            | Vyriešené zadania z deviateho týždna
+
+      hr
+      .row
+        .col-lg-offset-1.col-lg-10
+          .row
+            .col-lg-12
+              h3.text-primary A) Afínne transformácie
+              p
+                | Zdrojové kódy:
+                a< href="https://github.com/feki/iv122/blob/master/08/taskA.rb" taskA.rb
+                | ,
+                a< href="https://github.com/feki/iv122/blob/master/lib/matrices/linear_transformations.rb" linear_transformations.rb
+                | ,
+                a< href="https://github.com/feki/iv122/blob/master/lib/matrices/basic_operations.rb" basic_operations.rb
+              .row
+                .col-lg-4
+                  img.img-responsive src="img/08/translations1.png"
+                .col-lg-4
+                  img.img-responsive src="img/08/translations2.png"
+                .col-lg-4
+                  img.img-responsive src="img/08/translations4.png"
+          .row
+            .col-lg-12
+              h3.text-primary B) Multiple Reduction Copy Machine (MRCM)
+              p
+                | Zdrojové kódy:
+                a< href="https://github.com/feki/iv122/blob/master/08/mrcm.rb" mrcm.rb
+                | ,
+                a< href="https://github.com/feki/iv122/blob/master/08/taskB.rb" taskB.rb
+              .row
+                .col-lg-4
+                  img.img-responsive src="img/08/sierpinski.png"
+                .col-lg-4
+                  img.img-responsive src="img/08/sierpinski_relative.png"
+                .col-lg-4
+                  img.img-responsive src="img/08/sierpinski_relative2.png"
+                .col-lg-4
+                  img.img-responsive src="img/08/star.png"
+                .col-lg-4
+                  img.img-responsive src="img/08/barnsley_fern.png"
+
+    javascript:
+      hljs.initHighlightingOnLoad();

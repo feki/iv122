@@ -35,5 +35,6 @@ if __FILE__ == $0
   # img = ChaosGame.chaos_game(500, 6, 0.375)
   # img.display
   img = ChaosGame.chaos_game(15, 312, 0.005)
-  img.display
+  # img.display
+  img.write 'png:outputs/chaos_game.png'
 end

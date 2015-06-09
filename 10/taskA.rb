@@ -34,7 +34,7 @@ module LinearRegresion
   end
 
 
-  def plot_linear_regression(dataset)
+  def plot_linear_regression(dataset, filename)
     a, b = batch_gradient_descent(10000, 0.0001, dataset)
 
     x_data = dataset.collect { |p| p.x }
@@ -54,8 +54,8 @@ module LinearRegresion
       Gnuplot::Plot.new(gp) do |plot|
         # plot.title filename
 
-        # plot.terminal 'png'
-        # plot.output "outputs/#{File.basename(filename, '.*')}_plot.png"
+        plot.terminal 'png'
+        plot.output "outputs/#{filename}_plot.png"
 
         # Plot each cluster's points
         # clusters.each do |cluster|
@@ -85,8 +85,8 @@ include LinearRegresion
 
 if $0 == __FILE__
   data = read_dataset('linreg.txt')
-  plot_linear_regression(data)
+  plot_linear_regression(data, 'linreg')
 
   data = read_dataset('faithful.txt')
-  plot_linear_regression(data)
+  plot_linear_regression(data, 'faithful')
 end

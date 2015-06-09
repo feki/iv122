@@ -1,0 +1,61 @@
+doctype html
+html
+  head
+    title Ján Gábela, IV122 - 5. týždeň
+    == Slim::Template.new('site/_head.slim').render
+
+  body
+    .container
+      .row
+        .col-lg-10.col-lg-offset-1
+          h1.text-center
+            | Vyriešené zadania z piateho týždna
+
+      hr
+      .row
+        .col-lg-offset-1.col-lg-10
+          .row
+            .col-lg-12
+              h3.text-primary A) Priecečníky úsečiek
+              p
+                | Zdrojové kódy:
+                a< href="https://github.com/feki/iv122/blob/master/05/g_utils.rb" g_utils.rb
+                | ,
+                a< href="https://github.com/feki/iv122/blob/master/05/line_intersection.rb" line_intersection.rb
+                | ,
+                a< href="https://github.com/feki/iv122/blob/master/05/point.rb" point.rb
+                | ,
+                a< href="https://github.com/feki/iv122/blob/master/05/segment.rb" segment.rb
+                | ,
+                a< href="https://github.com/feki/iv122/blob/master/05/taskA.rb" taskA.rb
+              .row
+                .col-lg-12
+                  img.img-responsive src="img/05/intersections.png"
+          .row
+            .col-lg-12
+              h3.text-primary B) Triangulácia
+              p
+                | Zdrojové kódy:
+                a< href="https://github.com/feki/iv122/blob/master/05/triangulation.rb" triangulation.rb
+                | ,
+                a< href="https://github.com/feki/iv122/blob/master/05/taskB.rb" taskB.rb
+              .row
+                .col-lg-12
+                  img.img-responsive src="img/05/triangulation.png"
+
+          .row
+            .col-lg-12
+              h3.text-primary C) Konvexný obal
+              p
+                | Zdrojové kódy:
+                a< href="https://github.com/feki/iv122/blob/master/05/convex_hull.rb" convex_hull.rb
+                | ,
+                a< href="https://github.com/feki/iv122/blob/master/05/taskC.rb" taskC.rb
+              .row
+                .col-lg-12
+                  img.img-responsive src="img/05/convex_hull.png"
+
+          hr
+
+    javascript:
+      hljs.initHighlightingOnLoad();

@@ -1,0 +1,95 @@
+doctype html
+html
+  head
+    title Ján Gábela, IV122 - 6. týždeň
+    == Slim::Template.new('site/_head.slim').render
+
+  body
+    .container
+      .row
+        .col-lg-10.col-lg-offset-1
+          h1.text-center
+            | Vyriešené zadania z šiestého týždna
+
+      hr
+      .row
+        .col-lg-offset-1.col-lg-10
+          .row
+            .col-lg-12
+              h3.text-primary A) Chaos game
+              p
+                | Zdrojové kódy:
+                a< href="https://github.com/feki/iv122/blob/master/06/chaos_game.rb" chaos_game.rb
+              .row
+                .col-lg-12
+                  img.img-responsive src="img/06/chaos_game.png"
+          .row
+            .col-lg-12
+              h3.text-primary B) L-systémy
+              p
+                | Zdrojové kódy:
+                a< href="https://github.com/feki/iv122/blob/master/06/fractals.rb" fractals.rb
+                | ,
+                a< href="https://github.com/feki/iv122/blob/master/06/l_systems.rb" l_systems.rb
+              .row
+                .col-lg-4
+                  img.img-responsive src="img/06/koch_curve.png"
+                .col-lg-4
+                  img.img-responsive src="img/06/sierpinski_triangle.png"
+                .col-lg-4
+                  img.img-responsive src="img/06/hilbert_curve.png"
+                br
+              .row
+                .col-lg-4
+                  img.img-responsive src="img/06/koch_curve2.png"
+                .col-lg-4
+                  img.img-responsive src="img/06/koch_curve3.png"
+                .col-lg-4
+                  img.img-responsive src="img/06/koch_curve4.png"
+                br
+              .row
+                .col-lg-4
+                  img.img-responsive src="img/06/koch_curve5.png"
+                .col-lg-4
+                  img.img-responsive src="img/06/koch_curve6.png"
+                .col-lg-4
+                  img.img-responsive src="img/06/koch_curve7.png"
+                br
+              .row
+                .col-lg-4
+                  img.img-responsive src="img/06/koch_curve8.png"
+                .col-lg-4
+                  img.img-responsive src="img/06/koch_island.png"
+                .col-lg-4
+                  img.img-responsive src="img/06/koch_snowflake.png"
+                br
+              .row
+                .col-lg-4
+                  img.img-responsive src="img/06/branch2.png"
+                .col-lg-4
+                  img.img-responsive src="img/06/branch3.png"
+          .row
+            .col-lg-12
+              h3.text-primary C) Feigenbaumov diagram
+              p
+                | Zdrojové kódy:
+                a< href="https://github.com/feki/iv122/blob/master/06/feigenbaum_diagram.rb" feigenbaum_diagram.rb
+              .row
+                .col-lg-4
+                  img.img-responsive src="img/06/feigenbaum_diagram.0x1.0x1.2000.png"
+                .col-lg-4
+                  img.img-responsive src="img/06/feigenbaum_diagram.0.75x1.0.25x0.75.2000.png"
+                .col-lg-4
+                  img.img-responsive src="img/06/feigenbaum_diagram.0.85x1.0.75x1.2000.png"
+                br
+              .row
+                .col-lg-4
+                  img.img-responsive src="img/06/feigenbaum_diagram.0.85x1.0.85x1.2000.png"
+                .col-lg-4
+                  img.img-responsive src="img/06/feigenbaum_diagram.0.85x0.95.0.3x0.4.2000.png"
+                .col-lg-4
+                  img.img-responsive src="img/06/feigenbaum_diagram.0.85x0.92.0.85x0.95.2000.png"
+
+
+    javascript:
+      hljs.initHighlightingOnLoad();

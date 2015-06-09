@@ -1,7 +1,7 @@
 doctype html
 html
   head
-    title Ján Gábela, IV122 - 3. týždeň
+    title Ján Gábela, IV122 - 4. týždeň
     == Slim::Template.new('site/_head.slim').render
 
   body
@@ -9,101 +9,57 @@ html
       .row
         .col-lg-10.col-lg-offset-1
           h1.text-center
-            | Vyriešené zadania z tretieho týždňa
+            | Vyriešené zadania zo štvrtého  týždňa
 
       hr
       .row
         .col-lg-offset-1.col-lg-10
           .row
             .col-lg-12
-              h3.text-primary A) Knižnica pre korytnačiu grafiku
+              h3.text-primary A) Základné útvary
               p
                 | Zdrojové kódy:
-                a< href="https://github.com/feki/iv122/blob/master/lib/turtle_graphics/turtle.rb" turtle.rb
+                a< href="https://github.com/feki/iv122/blob/master/04/shapes.rb" shapes.rb (funkcie circle_full, circle_impl, circle_par, spiral, triangle, ellipse)
                 | ,
-                a< href="https://github.com/feki/iv122/blob/master/03/turtle_regular_polygon.rb" turtle_regular_polygon.rb
-                | ,
-                a< href="https://github.com/feki/iv122/blob/master/03/turtle_star_polygon.rb" turtle_star_polygon.rb
+                a< href="https://github.com/feki/iv122/blob/master/04/taskA.rb" taskA.rb
               .row
-                .col-lg-offset-3.col-lg-3
-                  img.img-responsive src="img/turtle_regular_polygon_n9.png"
                 .col-lg-3
-                  img.img-responsive src="img/turtle_star_polygon_n9_k5.png"
+                  img.img-responsive src="img/04/circle_full.png"
+                .col-lg-3
+                  img.img-responsive src="img/04/circle_impl.png"
+                .col-lg-3
+                  img.img-responsive src="img/04/circle_par.png"
+                .col-lg-3
+                .col-lg-3
+                  img.img-responsive src="img/04/spiral.png"
+                .col-lg-3
+                  img.img-responsive src="img/04/triangle.png"
+                .col-lg-3
+                  img.img-responsive src="img/04/ellipse.png"
+          .row
+            .col-lg-12
+              h3.text-primary B) Mnohouholník
+              p
+                | Zdrojové kódy:
+                a< href="https://github.com/feki/iv122/blob/master/04/shapes.rb" shapes.rb (funkcia sample_polygon)
+                | ,
+              .row
+                .col-lg-3
+                  img.img-responsive src="img/04/sample_polygon.png"
 
           .row
             .col-lg-12
-              h3.text-primary B) Vykreslovanie relatívne vs. absolútne
+              h3.text-primary C) Efekty
               p
                 | Zdrojové kódy:
-                a< href="https://github.com/feki/iv122/blob/master/03/turtle_shapes.rb" turtle_shapes.rb
-              .row
-                .col-lg-3
-                  img.img-responsive src="img/pictureA.png"
-              hr
-              .row
-                .col-lg-3
-                  img.img-responsive src="img/pictureB.png"
-              hr
-              .row
-                .col-lg-3
-                  img.img-responsive src="img/pictureD.png"
-              hr
-              .row
-                .col-lg-3
-                  img.img-responsive src="img/pictureE.png"
-
-          .row
-            .col-lg-12
-              h3.text-primary C) Korytnačia grafika a fraktály
-              p
-                | Zdrojové kódy:
-                a< href="https://github.com/feki/iv122/blob/master/lib/turtle_graphics/turtle.rb" turtle.rb
+                a< href="https://github.com/feki/iv122/blob/master/04/effects.rb" effects.rb
                 | ,
-                a< href="https://github.com/feki/iv122/blob/master/03/turtle_star_polygon.rb" turtle_star_polygon.rb
-                | ,
-                a< href="https://github.com/feki/iv122/blob/master/03/turtle_star_polygon.rb" turtle_star_polygon.rb
-                | ,
-                a< href="https://github.com/feki/iv122/blob/master/03/turtle_star_polygon.rb" turtle_star_polygon.rb
-                | ,
-                a< href="https://github.com/feki/iv122/blob/master/03/turtle_star_polygon.rb" turtle_star_polygon.rb
-                | ,
-                a< href="https://github.com/feki/iv122/blob/master/03/turtle_star_polygon.rb" turtle_star_polygon.rb
+                a< href="https://github.com/feki/iv122/blob/master/04/taskC.rb" taskC.rb
               .row
                 .col-lg-3
-                  h4.text-info Ker
-                  img.img-responsive src="img/turtle_shrub.png"
-              hr
-              .row
-                .col-lg-3
-                  h4.text-info Kochova vločka
-                  img.img-responsive src="img/turtle_koch_snowflake.png"
-              hr
-              .row
-                .col-lg-3
-                  h4.text-info Sierpinského trojuholník
-                  img.img-responsive src="img/turtle_sierpinski.png"
-              hr
-              .row
-                .col-lg-3
-                  h4.text-info Hilbertova krivka
-                  img.img-responsive src="img/turtle_hilbert.png"
-              hr
-              .row
-                .col-lg-3
-                  h4.text-info Päťuholníková vločka
-                  img.img-responsive src="img/turtle_pentaflake.png"
-              hr
-              .row
-                .col-lg-3
-                  h4.text-info Krishna Anklet
-                  img.img-responsive src="img/turtle_krishna_anklet.png"
-
-          .row
-            .col-lg-12
-              h3.text-primary D) Kreativita korytnačky
-              .row
-                .col-lg-3
-                  h4.text-info Dragon Curve
-                  img.img-responsive src="img/turtle_dragon_curve.png"
+                  img.img-responsive src="img/04/effect1.png"
 
           hr
+
+    javascript:
+      hljs.initHighlightingOnLoad();

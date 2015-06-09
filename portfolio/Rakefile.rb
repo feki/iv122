@@ -29,4 +29,11 @@ task :build, [:dir_name] => [:clean, :copy_files] do |t, args|
   File.open("#{dir_name}/1.html", 'w') { |f| f.write Slim::Template.new('site/1.slim').render }
   File.open("#{dir_name}/2.html", 'w') { |f| f.write Slim::Template.new('site/2.slim').render }
   File.open("#{dir_name}/3.html", 'w') { |f| f.write Slim::Template.new('site/3.slim').render }
+  File.open("#{dir_name}/4.html", 'w') { |f| f.write Slim::Template.new('site/4.slim').render }
+  File.open("#{dir_name}/5.html", 'w') { |f| f.write Slim::Template.new('site/5.slim').render }
+  File.open("#{dir_name}/6.html", 'w') { |f| f.write Slim::Template.new('site/6.slim').render }
+  File.open("#{dir_name}/7.html", 'w') { |f| f.write Slim::Template.new('site/7.slim').render }
+  File.open("#{dir_name}/8.html", 'w') { |f| f.write Slim::Template.new('site/8.slim').render }
+  File.open("#{dir_name}/9.html", 'w') { |f| f.write Slim::Template.new('site/9.slim').render }
+  File.open("#{dir_name}/10.html", 'w') { |f| f.write Slim::Template.new('site/10.slim').render }
 end

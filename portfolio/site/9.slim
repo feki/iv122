@@ -1,0 +1,110 @@
+doctype html
+html
+  head
+    title Ján Gábela, IV122 - 10. týždeň
+    == Slim::Template.new('site/_head.slim').render
+
+  body
+    .container
+      .row
+        .col-lg-10.col-lg-offset-1
+          h1.text-center
+            | Vyriešené zadania z desiateho týždna
+
+      hr
+      .row
+        .col-lg-offset-1.col-lg-10
+          .row
+            .col-lg-12
+              h3.text-primary A) Monty Hall problém
+              p
+                | Zdrojové kódy:
+                a< href="https://github.com/feki/iv122/blob/master/09/taskA.rb" taskA.rb
+                | ,
+                a< href="https://github.com/feki/iv122/blob/master/09/monty_hall.rb" monty_hall.rb
+              .row
+                p
+                  | Pokus ukázal, že stratégia zmeny vybraných dverí vedie k pravdepodobnosti výhry až 67%,
+                  | ak sa rozhodne hráč ostať pri povôdnom výbere tak pravdepodobnosť výhry je 33% a pri náhodnom
+                  | rozhodnutý je pravdepodobnosť 50%.
+                pre
+                  code.bash
+                    | n = 1000&#10;
+                    | &#10;
+                    |   Stay: 338 / 1000    = 33.800000 %&#10;
+                    |  Smart: 663 / 1000    = 66.300000 %&#10;
+                    | Random: 480 / 1000    = 48.000000 %&#10;
+                    | &#10;
+                    | n = 10000&#10;
+                    | &#10;
+                    |   Stay: 3383 / 10000   = 33.830000 %&#10;
+                    |  Smart: 6703 / 10000   = 67.030000 %&#10;
+                    | Random: 5007 / 10000   = 50.070000 %&#10;
+                    | &#10;
+                    | n = 100000&#10;
+                    | &#10;
+                    |   Stay: 33649 / 100000  = 33.649000 %&#10;
+                    |  Smart: 66577 / 100000  = 66.577000 %&#10;
+                    | Random: 49892 / 100000  = 49.892000 %&#10;
+                    | &#10;
+                    | n = 1000000&#10;
+                    | &#10;
+                    |   Stay: 333678 / 1000000 = 33.367800 %&#10;
+                    |  Smart: 666679 / 1000000 = 66.667900 %&#10;
+                    | Random: 500216 / 1000000 = 50.021600 %&#10;
+          .row
+            .col-lg-12
+              h3.text-primary B) Nenáhodné číslo
+              p
+                | Zdrojové kódy:
+                a< href="https://github.com/feki/iv122/blob/master/09/random_number.rb" random_number.rb
+              .row
+          .row
+            .col-lg-12
+              h3.text-primary C) Centrálna limitná veta
+              p
+                | Zdrojové kódy:
+                a< href="https://github.com/feki/iv122/blob/master/09/taskC.rb" taskC.rb
+                | ,
+                a< href="https://github.com/feki/iv122/blob/master/09/central_limit_theorem.rb" central_limit_theorem.rb
+              .row
+                .col-lg-5
+                  img.img-responsive src="img/09/hist1.png"
+                .col-lg-3
+                  img.img-responsive src="img/09/hist1.frequency_table.png"
+              .row
+                .col-lg-5
+                  img.img-responsive src="img/09/hist2.png"
+                .col-lg-3
+                  img.img-responsive src="img/09/hist2.frequency_table.png"
+              .row
+                .col-lg-5
+                  img.img-responsive src="img/09/hist3.png"
+                .col-lg-3
+                  img.img-responsive src="img/09/hist3.frequency_table.png"
+          .row
+            .col-lg-12
+              h3.text-primary D) Bayesova veta - kocky
+              p
+                | Zdrojové kódy:
+                a< href="https://github.com/feki/iv122/blob/master/09/bayes.rb" bayes.rb
+              .row
+                p
+                  | Pri použití uniformného prioru je pravdepodobnosť použitia druhej kocky až 92%. Pri použití prioru,
+                  | preferujúceho tretiu kocku, je pravdepodobnosť použitia druhej kocky 70%.
+                pre
+                  code.bash
+                    | prior: [1.0/3.0, 1.0/3.0, 1.0/3.0]&#10;
+                    | &#10;
+                    | 0. dice: 0.05775494514781386&#10;
+                    | 1. dice: 0.9240791223650218&#10;
+                    | 2. dice: 0.01816593248716451&#10;
+                    | &#10;
+                    | prior: [0.05, 0.05, 0.9]&#10;
+                    | &#10;
+                    | 0. dice: 0.0441274640812178&#10;
+                    | 1. dice: 0.7060394252994848&#10;
+                    | 2. dice: 0.24983311061929736&#10;
+
+    javascript:
+      hljs.initHighlightingOnLoad();

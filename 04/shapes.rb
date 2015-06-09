@@ -1,10 +1,16 @@
 require 'rubygems'
 require 'RMagick'
-require './../05/line_intersection'
+require_relative './../05/line_intersection'
 
 include Magick
 
+#
+#
+#
 module Shapes
+  #
+  #
+  #
   def circle_full(size, r)
     img = Image.new(size, size) { self.background_color = 'white' }
     cx = cy = size/2.0
@@ -14,10 +20,12 @@ module Shapes
       end
     end
 
-    # img.display
     img
   end
 
+  #
+  #
+  #
   def circle_impl(size, r, epsilon = 0.05)
     img = Image.new(size, size) { self.background_color = 'white' }
     cx = cy = size/2.0
@@ -27,10 +35,12 @@ module Shapes
       end
     end
 
-    # img.display
     img
   end
 
+  #
+  #
+  #
   def circle_par(size, r)
     img = Image.new(size, size) { self.background_color = 'white' }
     cx = cy = size/2.0
@@ -41,15 +51,12 @@ module Shapes
       t += 0.001
     end
 
-    # for t in 0...360
-    #   tt = 2 * Math::PI * t / 360
-    #   img.pixel_color((cx + r * Math.cos(tt)).to_int, (cy + r * Math.sin(tt)).to_int, 'black')
-    # end
-
-    # img.display
     img
   end
 
+  #
+  #
+  #
   def spiral(size, s)
     img = Image.new(size, size) { self.background_color = 'white' }
     cx = cy = size/2.0
@@ -63,18 +70,18 @@ module Shapes
         y = (cy + r * Math.sin(t)).to_int
 
         img.pixel_color(x, y, "rgb(#{x/size.to_f*255}, 0, #{y/size.to_f*255})")
-        # img.pixel_color(x, y, "rgb(#{x%255}, 0, #{y%255})")
-        
+
         r += s
       end
       t += 0.001
     end
 
-    # img.display
     img
   end
 
+  #
   # Rovnostranny trojuholnik so stranou a
+  #
   def triangle(a)
     sqrt3 = Math.sqrt(3)
     m = a*sqrt3/2
@@ -87,7 +94,6 @@ module Shapes
     ((-a/2)..(a/2)).each do |x|
       n = sqrt3*x
       (0...m.to_i).each do |y|
-        # img.pixel_color(x+a/2, m-y-1, 'black') if y <= m-n and y <= m+n
         ca = color_triangle.call([x+a/2, m-y-1], av)
         cb = color_triangle.call([x+a/2, m-y-1], bv)
         cc = color_triangle.call([x+a/2, m-y-1], cv)
@@ -95,10 +101,12 @@ module Shapes
       end
     end
 
-    # img.display
     img
   end
 
+  #
+  #
+  #
   def ellipse(size, a, b, angle = 0)
     img = Image.new(size, size) { self.background_color = 'white' }
     
@@ -116,17 +124,14 @@ module Shapes
         nx = (x-ex)*Math.cos(radians) - (y-ey)*Math.sin(radians)
         ny = (x-ex)*Math.sin(radians) + (y-ey)*Math.cos(radians)
         r = nx**2/a**2 + ny**2/b**2
-        # rgb = 255*r
-        # img.pixel_color(x, y, "rgb(#{rgb},#{rgb},#{rgb})") if r <= 1
+
         img.pixel_color(x, y, "cmyk(0,0,0,#{255*(1-r)}") if r <= 1
-        # img.pixel_color(x, y, "cmyk(#{255*r},#{255*(1-r)},#{255*(r/2)},128") if r <= 1
       end
     end
 
-    # img.display
     img
   end
-
+  
   def in_range?(rl, rr, n)
     # First version
     (rl..rr).include?(n) || (rr..rl).include?(n)
@@ -191,7 +196,11 @@ module Shapes
     check_point(l1, p) && check_point(l2, p)
   end
 
+  #
+  #
+  #
   # [[10, 10], [180, 20], [160, 150], [100, 50], [20,180]]
+  #
   def polygon(size, points)
     img = Image.new(size, size) { self.background_color = 'white' }
 
@@ -246,10 +255,12 @@ module Shapes
       end
     end
 
-    # img.display
     img
   end
 
+  #
+  #
+  #
   def sample_polygon
     polygon(200, [[10.0, 10.0], [180.0, 20.0], [160.0, 150.0], [100.0, 50.0], [20.0,180.0]])
   end

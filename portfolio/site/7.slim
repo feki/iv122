@@ -1,0 +1,42 @@
+doctype html
+html
+  head
+    title Ján Gábela, IV122 - 7. týždeň
+    == Slim::Template.new('site/_head.slim').render
+
+  body
+    .container
+      .row
+        .col-lg-10.col-lg-offset-1
+          h1.text-center
+            | Vyriešené zadania zo siedmeho týždna
+
+      hr
+      .row
+        .col-lg-offset-1.col-lg-10
+          .row
+            .col-lg-12
+              h3.text-primary A) Newtonov fraktál
+              p
+                | Zdrojové kódy:
+                //a< href="https://github.com/feki/iv122/blob/master/06/chaos_game.rb" chaos_game.rb
+              .row
+          .row
+            .col-lg-12
+              h3.text-primary B) Mandelbrotova množina
+              p
+                | Zdrojové kódy:
+                /a< href="https://github.com/feki/iv122/blob/master/06/fractals.rb" fractals.rb
+                /| ,
+                /a< href="https://github.com/feki/iv122/blob/master/06/l_systems.rb" l_systems.rb
+              .row
+          .row
+            .col-lg-12
+              h3.text-primary C) Juliova množina
+              p
+                | Zdrojové kódy:
+                /a< href="https://github.com/feki/iv122/blob/master/06/feigenbaum_diagram.rb" feigenbaum_diagram.rb
+              .row
+
+    javascript:
+      hljs.initHighlightingOnLoad();
