@@ -57,10 +57,10 @@ if $0 == __FILE__
     end
   end
 
-  selected_segments.each do |s|
-    svg.add_shape(Svg::Line.new(s.p1.x, s.p1.y, s.p2.x, s.p2.y))
-  end
+    selected_segments.each do |s|
+      svg.add_shape(Svg::Line.new(s.p1.x, s.p1.y, s.p2.x, s.p2.y))
+    end
 
-  svg.doc.write File.new('outputs/triangulation.svg', 'w')
+    svg.doc.write File.new('outputs/triangulation.svg', 'w')
 
 end

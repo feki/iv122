@@ -13,6 +13,7 @@ module Turtle
       y = args[:y] || 0
       angle = args[:angle] || 90.0
       @position, @angle, @pen = [x, y], angle, true
+      @states = []
     end
 
     def forward(step)
@@ -30,6 +31,17 @@ module Turtle
 
     def left(angle)
       change_angle(angle)
+    end
+
+    def push_state
+      @states.push [[@position[0], @position[1]], @angle, @pen]
+    end
+
+    def pop_state
+      state = @states.pop
+      @position = state[0]
+      @angle = state[1]
+      @pen = state[2]
     end
 
     def pen_up

@@ -1,4 +1,7 @@
 module BasicOperations
+  #
+  # It computes matrix multiplication.
+  #
   def multiplication(m1, m2)
     raise ArgumentError, 'Number of columns of first matrix is not equal to number of rows of second matrix' if m1[0].count != m2.count
 
