@@ -30,11 +30,15 @@ module ChaosGame
 end
 
 if __FILE__ == $0
-  # img = ChaosGame.chaos_game(500, 3)
-  # img.display
-  # img = ChaosGame.chaos_game(500, 6, 0.375)
-  # img.display
-  img = ChaosGame.chaos_game(15, 312, 0.005)
+  img = ChaosGame.chaos_game(500, 3)
   # img.display
   img.write 'png:outputs/chaos_game.png'
+
+  img = ChaosGame.chaos_game(500, 6, 0.375)
+  # img.display
+  img.write 'png:outputs/chaos_game2.png'
+
+  img = ChaosGame.chaos_game(15, 312, 0.005)
+  # img.display
+  img.write 'png:outputs/chaos_game3.png'
 end
